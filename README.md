@@ -44,13 +44,8 @@ npx @nosleepman/react-starter my-app
 
 Remplacez `my-app` par le nom de votre projet. Un dossier sera créé avec ce nom.
 
-### Démarrer le développement
-
-```bash
-cd my-app
-npm install
-npm run dev
-```
+## demarrage
+L'environnement de de demarrage est automatique 
 
 L'application s'ouvrira automatiquement sur http://localhost:5173
 
@@ -123,7 +118,7 @@ L'application inclut un système d'authentification complet et prêt à l'emploi
 
 - `/login` - Page de connexion avec validation de formulaire
 - `/register` - Page d'inscription avec formulaires multiples
-- `/` - Page d'accueil protégée (accessible uniquement si connecté)
+- `/` - Page d'accueil protégée 
 
 ### Flux d'authentification
 
