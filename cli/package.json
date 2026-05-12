@@ -1,0 +1,19 @@
+{
+  "name": "@nosleepman/react-starter",
+  "version": "1.0.3",
+  "description": "CLI to create a React app with TypeScript, Tailwind, shadcn, React Router, auth, and more",
+  "main": "bin/cli.js",
+  "bin": {
+    "react-starter": "bin/cli.js"
+  },
+  "scripts": {
+    "start": "node bin/cli.js"
+  },
+  "keywords": ["react", "typescript", "tailwind", "shadcn", "cli", "scaffold"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "inquirer": "^9.2.12"
+  }
+}
