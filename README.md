@@ -152,8 +152,8 @@ Réponse réussie :
   "user": {
     "id": "123",
     "email": "utilisateur@exemple.com",
-    "firstname": "Jean",
-    "lastname": "Dupont"
+    "firstname": "Itachi",
+    "lastname": "Uchiha"
   }
 }
 ```
@@ -165,9 +165,9 @@ Requête :
 {
   "email": "nouveau@exemple.com",
   "password": "motdepasse123",
-  "firstname": "Jean",
-  "lastname": "Dupont",
-  "phone": "+33612345678"
+  "firstname": "Shikamaru",
+  "lastname": "Nara",
+  "phone": "+221773757077"
 }
 ```
 
