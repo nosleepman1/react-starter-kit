@@ -35,7 +35,6 @@ export interface RegisterError {
     errors: {
         name?: string[]
         email?: string[]
-        matricule?: string[]
         password?: string[]
     }
 }
