@@ -1,6 +1,6 @@
 {
   "name": "@nosleepman/react-starter",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "CLI to create a React app with TypeScript, Tailwind, shadcn, React Router, auth, and more",
   "main": "bin/cli.js",
   "bin": {
