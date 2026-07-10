@@ -1,0 +1,9 @@
+node_modules
+dist
+build
+.vite
+.env
+.env.local
+.env.*.local
+.eslintcache
+*.log
