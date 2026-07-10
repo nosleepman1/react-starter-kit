@@ -29,12 +29,14 @@ Detailed documentation is available in both English and French inside the organi
 - [Read Me - Full English Version](docs/README.en.md)
 - [Technical Architecture and Design Patterns](docs/ARCHITECTURE.md)
 - [Contributing Guidelines and Standards](docs/CONTRIBUTING.md)
+- [Testing Guidelines](docs/TESTING.md)
 
 ### Français (FR)
 
 - [Lisez-moi - Version Française Complète](docs/README.fr.md)
 - [Architecture Technique et Choix Technologiques](docs/ARCHITECTURE.fr.md)
 - [Directives et Règles de Contribution](docs/CONTRIBUTING.fr.md)
+- [Guide de Test (Français)](docs/TESTING.md)
 
 ## Repository Structure
 
