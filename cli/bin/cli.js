@@ -38,7 +38,7 @@ function detectPackageManager() {
 }
 
 async function run() {
-  console.log(pc.bold(pc.violet('\n Bienvenue dans React Starter Kit !\n')));
+  console.log(pc.bold(pc.magenta('\n Bienvenue dans React Starter Kit !\n')));
 
   // Récupérer le nom du projet en argument ou via prompt
   let projectName = process.argv[2];
@@ -98,7 +98,7 @@ async function run() {
   console.log(pc.cyan(`\nClonage du template depuis GitHub (nosleepman1/react-starter-kit)...`));
 
   try {
-    const cloneProgress = degit('nosleepman1/react-starter-kit/template', {
+    const cloneProgress = degit('nosleepman1/react-starter-kit/template#gitignore', {
       cache: false,
       force: true
     });
@@ -166,7 +166,7 @@ async function run() {
       }
     }
 
-    console.log('\n' + pc.bold(pc.violet('===============================================================================')));
+    console.log('\n' + pc.bold(pc.magenta('===============================================================================')));
     console.log(pc.bold('Prise en main rapide :'));
     console.log(`  1. cd ${pc.cyan(projectName)}`);
     if (!install) {
@@ -180,7 +180,7 @@ async function run() {
     else if (packageManager === 'bun') runDevCommand = 'bun dev';
 
     console.log(`  4. Lancez le projet : ${pc.cyan(runDevCommand)}`);
-    console.log(pc.bold(pc.violet('===============================================================================\n')));
+    console.log(pc.bold(pc.magenta('===============================================================================\n')));
 
   } catch (err) {
     console.error(pc.red('\n Erreur lors de la création du projet :'), err);
