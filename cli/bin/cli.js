@@ -11,7 +11,6 @@ import { execSync } from 'child_process';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Regex pour valider un nom de package npm valide
 const VALID_PACKAGE_NAME_REGEX = /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/;
 
 function validateProjectName(name) {
@@ -21,14 +20,12 @@ function validateProjectName(name) {
   if (!VALID_PACKAGE_NAME_REGEX.test(name)) {
     return 'Le nom du projet doit être un nom de package npm valide (minuscules, chiffres, tirets).';
   }
-  // Protection contre le path traversal
   if (name.includes('..') || name.includes('/') || name.includes('\\')) {
     return 'Le nom du projet ne doit pas contenir de chemins relatifs.';
   }
   return true;
 }
 
-// Détecte le package manager utilisé pour lancer la commande
 function detectPackageManager() {
   const userAgent = process.env.npm_config_user_agent || '';
   if (userAgent.startsWith('pnpm')) return 'pnpm';
@@ -40,7 +37,7 @@ function detectPackageManager() {
 async function run() {
   console.log(pc.bold(pc.magenta('\n Bienvenue dans React Starter Kit !\n')));
 
-  // Récupérer le nom du projet en argument ou via prompt
+  
   let projectName = process.argv[2];
   
   if (projectName) {
