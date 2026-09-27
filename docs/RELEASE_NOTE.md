@@ -1,3 +1,61 @@
+# Release Notes - v1.2.0
+
+We are thrilled to release React Starter Kit v1.2.0! This version introduces a complete testing infrastructure with Vitest, a more robust state management using React Query, and a highly polished, animated 404 page.
+
+---
+
+## English (EN)
+
+### Key Features and Enhancements
+
+#### 1. Testing Infrastructure (Vitest & React Testing Library)
+- **Zero-config Testing:** Integrated `vitest`, `jsdom`, and `@testing-library/react` seamlessly into Vite.
+- **Robust Mocks:** Automatically mocks unsupported browser features (like `window.matchMedia`) in the `setupTests.ts` file.
+- **Blueprint Test Suite:** Added `appRoutes.test.tsx` providing a robust example of how to test routing and Context providers.
+
+#### 2. Global State & React Query Refactoring
+- **React Query Migration:** Completely refactored `AuthContext.tsx` to utilize `@tanstack/react-query` instead of manual `useState`/`useEffect` hooks.
+- **Synchronized Data:** Authentication now leverages React Query's robust caching, automatic error state handling, and global background refetching.
+
+#### 3. Animated 404 "Not Found" Page
+- **Polished 404 UX:** Introduced a fun, interactive 404 page for unknown routes.
+- **Framer Motion Elements:** Features a continuously levitating ghost icon, animated question marks, a glitchy 404 text effect, and an engaging copywriting message.
+
+#### 4. UI & Layout Bug Fixes
+- **Layout Adjustments:** Fixed an unexpected vertical scrollbar issue in `App.tsx` by applying precise `flex-col` and `flex-1` utilities.
+- **Interactive Social Logins:** Added visual feedback (`sonner` toasts) to the Social Login buttons so developers aren't left with dead clicks out-of-the-box.
+
+#### 5. Security & Dependency Updates
+- **Clean Audit:** Successfully resolved 15 dependencies vulnerabilities (10 high, 4 moderate) across both the `cli` and `template` packages, bringing the repository back to **0 known vulnerabilities**.
+
+---
+
+## Français (FR)
+
+### Fonctionnalités Clés et Améliorations
+
+#### 1. Infrastructure de Tests (Vitest & React Testing Library)
+- **Tests intégrés :** Mise en place complète de `vitest`, `jsdom` et `@testing-library/react` directement intégrés à Vite.
+- **Mocks automatiques :** Création d'un fichier `setupTests.ts` qui s'occupe de mocker proprement `window.matchMedia` (requis par `next-themes`).
+- **Suite de tests de référence :** Ajout de `appRoutes.test.tsx` pour tester le routage de l'application et vérifier le bon rendu des pages selon l'état d'authentification.
+
+#### 2. Refactorisation avec React Query
+- **Migration AuthContext :** Remplacement de la logique manuelle de récupération de l'utilisateur par le hook `useQuery` de `@tanstack/react-query`.
+- **Fiabilité accrue :** La gestion du cache, du chargement initial et des erreurs (401) est désormais nativement prise en charge et synchronisée par React Query.
+
+#### 3. Page 404 Animée (Not Found)
+- **Expérience Utilisateur (UX) :** Création d'une page 404 amusante et mémorable pour intercepter les routes inexistantes.
+- **Animations fluides :** Utilisation de `framer-motion` pour animer un petit fantôme lévitant, afficher un texte 404 "glitchy" et un message d'erreur humoristique.
+
+#### 4. Correction de l'UI et du Layout
+- **Structure CSS :** Résolution d'un problème de hauteur générant un défilement inutile dans `App.tsx` grâce à l'utilisation appropriée de `flex-1` et `flex-col`.
+- **Boutons interactifs :** Les boutons de connexion sociale ("Continuer avec Google/Apple...") affichent désormais des notifications Toast pour indiquer au développeur que la fonctionnalité reste à implémenter.
+
+#### 5. Sécurité & Mise à jour des dépendances
+- **Audit propre :** Correction de 15 vulnérabilités (dont 10 critiques) en mettant à jour de nombreux paquets (tels qu'`axios` et `hono`) sur le `template` et l'outil `cli`. Le dépôt affiche de nouveau 0 faille de sécurité.
+
+---
+
 # Release Notes - v1.1.0
 
 We are excited to announce the release of React Starter Kit v1.1.0. This release introduces a major architectural overhaul, transforming the project into a modern monorepo, fixing critical security vulnerabilities, adding a next-generation UI design, and integrating robust form validations.
