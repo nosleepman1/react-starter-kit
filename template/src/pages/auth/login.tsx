@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import SocialButton from '@/components/ui/social-button'
+import { toast } from 'sonner'
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
 
@@ -72,9 +73,9 @@ const Login = () => {
 
         {/* Social Login */}
         <motion.div variants={item} className="auth-social-group">
-          <SocialButton provider="google" onClick={() => {}} />
-          <SocialButton provider="github" onClick={() => {}} />
-          <SocialButton provider="apple" onClick={() => {}} />
+          <SocialButton provider="google" onClick={() => toast.info('Connexion Google à implémenter')} />
+          <SocialButton provider="github" onClick={() => toast.info('Connexion GitHub à implémenter')} />
+          <SocialButton provider="apple" onClick={() => toast.info('Connexion Apple à implémenter')} />
         </motion.div>
 
         {/* Divider */}
