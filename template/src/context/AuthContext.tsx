@@ -1,7 +1,8 @@
-import { createContext, useCallback, useContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect } from 'react'
 import type { AuthContextType, User } from '@/types/auth'
 import CURRENT_USER from '@/services/auth/currentUser'
 import { tokenStore } from '@/lib/tokenStore'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 
 // ─── Context ──────────────────────────────────────────────────────────────────
 
@@ -10,54 +11,46 @@ export const AuthContext = createContext<AuthContextType | null>(null)
 // ─── Provider ─────────────────────────────────────────────────────────────────
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null)
-  const [loading, setLoading] = useState<boolean>(tokenStore.hasToken())
+  const queryClient = useQueryClient()
+
+  const { data: user = null, isLoading, isError } = useQuery<User | null>({
+    queryKey: ['currentUser'],
+    queryFn: async () => {
+      const token = tokenStore.get()
+      if (!token) return null
+      return await CURRENT_USER(token)
+    },
+    retry: false, // Pas de retry automatique sur erreur d'auth
+    staleTime: 1000 * 60 * 5, // 5 min
+  })
 
   const logout = useCallback((): void => {
     tokenStore.clear()
-    setUser(null)
-  }, [])
+    queryClient.setQueryData(['currentUser'], null)
+  }, [queryClient])
+
+  useEffect(() => {
+    if (isError) {
+      logout()
+    }
+  }, [isError, logout])
 
   const login = useCallback(async (newToken: string): Promise<void> => {
     tokenStore.set(newToken)
     try {
-      const currentUser = await CURRENT_USER(newToken)
-      setUser(currentUser)
+      const currentUser = await queryClient.fetchQuery({
+        queryKey: ['currentUser'],
+        queryFn: () => CURRENT_USER(newToken),
+      })
+      if (!currentUser) throw new Error('Impossible de récupérer le profil utilisateur.')
     } catch {
-      // Si la récupération du profil échoue, on invalide la session
       tokenStore.clear()
       throw new Error('Impossible de récupérer le profil utilisateur.')
     }
-  }, [])
+  }, [queryClient])
 
-  // Restauration de session au démarrage
-  useEffect(() => {
-    const storedToken = tokenStore.get()
-
-    if (!storedToken) {
-      setLoading(false)
-      return
-    }
-
-    let cancelled = false
-
-    CURRENT_USER(storedToken)
-      .then((currentUser) => {
-        if (!cancelled) setUser(currentUser)
-      })
-      .catch(() => {
-        // Token expiré ou invalide → on purge
-        if (!cancelled) logout()
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false)
-      })
-
-    return () => {
-      cancelled = true
-    }
-  }, [logout])
-
+  // On considère que ça charge si react-query charge ET qu'on a un token
+  const loading = isLoading && tokenStore.hasToken()
   const isAuthenticated = user !== null
 
   return (
